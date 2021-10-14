@@ -1,6 +1,7 @@
-#-----Комбінаторика-----
+#-----Комбінаторика----- by Тьма2
 
 
+#---- Функція для знаходження факторіла(Кількість можливих переміщень позицій) ----
 def factorial(natural,first_natural = 1):
 	formul = "Pn = n! = 1*"
 	answer = 1
@@ -11,6 +12,7 @@ def factorial(natural,first_natural = 1):
 	return (answer,formul[:-1])
 
 
+#---- Функція для знаходження можливих позицій розташованих в певному порядку ----
 def fixed_factorial(n,k):
 	formul = "A(n k) = N*(n-1)...(n-k+1) = {}*".format(n)
 	end = int(n-k+1)
@@ -31,6 +33,7 @@ def fixed_factorial(n,k):
 	return (answer, formul[:-1])
 
 
+#---- Функція для знаходження всіх можливих комбінацій елементів ----
 def combinate_factorial(n,k):
 	main_formul = "C(k,n) = A(n,k)/P(n) = "
 	a = fixed_factorial(n, k)
@@ -41,6 +44,7 @@ def combinate_factorial(n,k):
 	return (answer, formul)
 
 
+#---- Основна функція яка виконує запрошені дії користуючись функціями ----
 def main():
 	print("---Виберіть дію---\n1 - Знайти Кількість переміщень позицій\n2 - Знайти кількість переміщень розташованих в певному порядку\n3 - Знайти кількість можливих комбінацій переміщень")
 	data = int(input("1, 2, 3?: "))
@@ -48,6 +52,7 @@ def main():
 		action = int(input("\033[31mВведіть число можливих позицій: \n"))
 		data = factorial(action)
 		print("\033[33m\nВаша відповідь: {} = {}".format(data[1], data[0]))
+		return
 	if data == 2 or data == 3:
 		action = int(input("\033[31mВведіть кількість позицій: \n"))
 		action2 = int(input("\033[31mВведіть кількість об'єктів: \n"))
@@ -56,9 +61,10 @@ def main():
 		if data == 3:
 			data = combinate_factorial(action, action2)
 		print("\033[33m\nВаша відповідь: {} = {}".format(data[1], data[0]))
+		return
 	else:
 		print("\nВи ввели число якого немає в списку, перезапустіть програму та спробуйте ще раз")
-	return
+		return
 
 
 if __name__ == "__main__":
